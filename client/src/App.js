@@ -1,12 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+const App = () => {
+  const [url, setURL] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ url });
+    setURL("");
+  };
+
   return (
-    <div>
-      <p>Hello World!</p>
+    <div className="home">
+      <form className="home__form">
+        <h2>Website Aggregator</h2>
+        <input
+          type='url'
+          name='url'
+          id='url'
+          value={url}
+          onChange={(e) => setURL(e.target.value)}
+        />
+        <button onClick={handleSubmit}>ADD WEBSITE</button>
+      </form>
     </div>
   );
-}
+};
 
 export default App;
